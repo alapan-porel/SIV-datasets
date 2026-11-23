@@ -1,0 +1,68 @@
+{
+  "dataset_name": "Mental Health & Clinical Psychotherapy SIV Dialogue Corpus",
+  "description": "Comprehensive multi-stage clinical psychotherapy dialogue dataset for fine-tuning Large Language Models in evidence-based therapeutic communication, affective validation, and clinical protocol adherence.",
+  "framework": {
+    "acronym": "SIV",
+    "full_name": "State-Intervention-Value",
+    "components": {
+      "State": "Observed phenomenological state and canonical diagnostic classification of client presentation (e.g. trauma activation, interpersonal conflict, depressive rumination).",
+      "Intervention": "Therapeutic technique and delivery style applied by the clinician/AI (e.g. Cognitive Reframing, Affective Validation, Somatic Grounding).",
+      "Value": "Clinical goal / therapeutic target (e.g. contain distress, stabilize arousal, strengthen attachment security, support expression, shift cognition, build agency)."
+    }
+  },
+  "stages": [
+    {
+      "stage_name": "Stage 1: Raw Dialogue Drafts",
+      "filename": "stage1_drafts_merged.jsonl",
+      "relative_path": "01_raw_dialogue_drafts/stage1_drafts_merged.jsonl",
+      "purpose": "Weak-supervision domain adaptation and dialogue candidate generation.",
+      "row_count": 230472,
+      "size_mb": 200.72,
+      "schema_keys": [
+        "draft_user",
+        "draft_assistant",
+        "source"
+      ]
+    },
+    {
+      "stage_name": "Stage 2: Emotional & Affective SIV Dialogues",
+      "filename": "siv_emotional_dialogues_merged.jsonl",
+      "relative_path": "02_emotional_siv_dialogues/siv_emotional_dialogues_merged.jsonl",
+      "purpose": "Empathetic validation and affective alignment with full SIV taxonomy.",
+      "row_count": 31362,
+      "size_mb": 37.32,
+      "schema_keys": [
+        "siv_metadata",
+        "conversations",
+        "source"
+      ]
+    },
+    {
+      "stage_name": "Stage 3: Clinical Protocol Dialogues",
+      "filename": "siv_clinical_dialogues_v1.jsonl",
+      "relative_path": "03_clinical_protocol_dialogues/siv_clinical_dialogues_v1.jsonl",
+      "purpose": "Protocol-guided clinical psychotherapy dialogues (CBT, DBT, Somatic, Psychodynamic) with full SIV triples.",
+      "row_count": 44901,
+      "size_mb": 59.96,
+      "schema_keys": [
+        "siv_metadata",
+        "conversations",
+        "source"
+      ]
+    },
+    {
+      "stage_name": "Stage 4: Supervised Fine-Tuning (SFT)",
+      "filename": "siv_training_data_v1.jsonl",
+      "relative_path": "04_instruction_tuning_sft/siv_training_data_v1.jsonl",
+      "purpose": "Ready-to-train ChatML/ShareGPT format with system prompt and full SIV metadata.",
+      "row_count": 13539,
+      "size_mb": 24.0,
+      "schema_keys": [
+        "siv_metadata",
+        "conversations",
+        "source"
+      ]
+    }
+  ],
+  "total_corpus_rows": 320274
+}
